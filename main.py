@@ -1,4 +1,12 @@
 # This is a sample Python script.
+from email import Email
+from event import Event
+from language import Language
+from sms import Sms
+from student import Student
+from telegram import Telegram
+from visitor import Visitor
+
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
@@ -7,6 +15,23 @@
 def main(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+
+
+    zhtw = Language("zh-tw")
+    jonny = Visitor("jonny",zhtw)
+
+    enus = Language("en-us")
+    robert = Student("robert",enus)
+
+    telegram = Telegram()
+    email = Email()
+    sms = Sms()
+
+    signup = Event("signup")
+    subscribe = Event("subscribe")
+    cancel = Event("cancel")
+    # print(robert)
+    # print(jonny)
 
 
 # Press the green button in the gutter to run the script.
