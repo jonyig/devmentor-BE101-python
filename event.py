@@ -13,11 +13,12 @@ class Event:
     route: Route
     user: Visitor
 
-    def __init__(self, event_name: str, user: Visitor = None):
+    def __init__(self, event_name: str):
+        self.event_name = event_name
         self.sms_route = Sms()
         self.email_route = Email()
         self.tg_route = Telegram()
-        self.user = user
+        # self.user = user
 
         # if event_name == "signup":
         #     self.notify_signup()
@@ -26,7 +27,8 @@ class Event:
         # elif event_name == "cancel":
         #     self.notify_cancel()
 
-    def notify(self):
+    def notify(self, user):
+        self.user = user
         if self.event_name == "signup":
             self.notify_signup()
         elif self.event_name == "subscribe":

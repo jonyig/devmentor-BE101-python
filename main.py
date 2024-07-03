@@ -29,11 +29,13 @@ def main(name):
     sms = Sms()
     print(robert.name)
 
-    signup = Event("signup", user=jonny)
-    signup.notify()
-    subscribe = Event("subscribe", user=robert)
-    cancel = Event("cancel", user=robert)
-    cancel.notify()
+    signup = Event("signup")
+    signup = Event("signup")
+    signup.notify(user=jonny)
+    subscribe = Event("subscribe")
+    subscribe.notify(user=jonny)
+    cancel = Event("cancel")
+    cancel.notify(user=jonny)
 
     # cancel = Event("cancel", jonny)
 
