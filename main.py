@@ -2,6 +2,7 @@
 from email import Email
 from event import Event
 from language import Language
+from route import Route
 from sms import Sms
 from student import Student
 from telegram import Telegram
@@ -18,21 +19,25 @@ def main(name):
 
 
     zhtw = Language("zh-tw")
-    jonny = Visitor("jonny",zhtw)
+    jonny = Visitor("jonny", zhtw)
 
     enus = Language("en-us")
-    robert = Student("robert",enus)
+    robert = Student("robert", enus)
 
     telegram = Telegram()
     email = Email()
     sms = Sms()
+    print(robert.name)
 
-    signup = Event("signup")
-    subscribe = Event("subscribe")
-    cancel = Event("cancel")
-    # print(robert)
-    # print(jonny)
+    signup = Event("signup", visitor=jonny)
+    subscribe = Event("subscribe", student=robert)
+    cancel = Event("cancel", student=robert)
+    # cancel = Event("cancel", jonny)
 
+    # sms_route = Sms()
+    # email_route = Email()
+    # telegram_route = Telegram()
+    # sms_route.send('hiii')
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
