@@ -30,19 +30,12 @@ def main(name):
     print(robert.name)
 
     signup = Event("signup")
-    signup = Event("signup")
     signup.notify(user=jonny)
     subscribe = Event("subscribe")
     subscribe.notify(user=jonny)
     cancel = Event("cancel")
     cancel.notify(user=jonny)
 
-    # cancel = Event("cancel", jonny)
-
-    # sms_route = Sms()
-    # email_route = Email()
-    # telegram_route = Telegram()
-    # sms_route.send('hiii')
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

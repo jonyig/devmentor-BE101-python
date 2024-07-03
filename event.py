@@ -18,14 +18,6 @@ class Event:
         self.sms_route = Sms()
         self.email_route = Email()
         self.tg_route = Telegram()
-        # self.user = user
-
-        # if event_name == "signup":
-        #     self.notify_signup()
-        # elif event_name == "subscribe":
-        #     self.notify_subscribe()
-        # elif event_name == "cancel":
-        #     self.notify_cancel()
 
     def notify(self, user):
         self.user = user
