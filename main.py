@@ -29,9 +29,9 @@ def main(name):
     sms = Sms()
     print(robert.name)
 
-    signup = Event("signup", visitor=jonny)
-    subscribe = Event("subscribe", student=robert)
-    cancel = Event("cancel", student=robert)
+    signup = Event("signup", user=jonny)
+    subscribe = Event("subscribe", user=robert)
+    cancel = Event("cancel", user=robert)
     # cancel = Event("cancel", jonny)
 
     # sms_route = Sms()
