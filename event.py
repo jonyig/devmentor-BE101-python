@@ -5,7 +5,6 @@ from typing import List
 from email import Email
 from route import Route
 from sms import Sms
-from student import Student
 from telegram import Telegram
 from visitor import Visitor
 
