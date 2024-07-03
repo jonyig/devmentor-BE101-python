@@ -19,15 +19,20 @@ class Event:
         self.tg_route = Telegram()
         self.user = user
 
-        if event_name == "signup":
+        # if event_name == "signup":
+        #     self.notify_signup()
+        # elif event_name == "subscribe":
+        #     self.notify_subscribe()
+        # elif event_name == "cancel":
+        #     self.notify_cancel()
+
+    def notify(self):
+        if self.event_name == "signup":
             self.notify_signup()
-            # print(f"Hello {visitor.name} just signed up!")
-        elif event_name == "subscribe":
+        elif self.event_name == "subscribe":
             self.notify_subscribe()
-            # print("hello subscribe")
-        elif event_name == "cancel":
+        elif self.event_name == "cancel":
             self.notify_cancel()
-            # print("hello cancel")
 
     def notify_signup(self):
         self.sms_route.send(f" {self.user.name} signed up SUCCESSFULLY!")

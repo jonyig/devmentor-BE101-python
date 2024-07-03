@@ -30,8 +30,11 @@ def main(name):
     print(robert.name)
 
     signup = Event("signup", user=jonny)
+    signup.notify()
     subscribe = Event("subscribe", user=robert)
     cancel = Event("cancel", user=robert)
+    cancel.notify()
+
     # cancel = Event("cancel", jonny)
 
     # sms_route = Sms()
