@@ -1,44 +1,35 @@
 # Event -ASSOCIATION - Route
 # Event - DEPENDENCY - Visitor
+from typing import List
+
 from email import Email
 from route import Route
 from sms import Sms
-from student import Student
 from telegram import Telegram
 from visitor import Visitor
 
 
 class Event:
+    event_name: str
+    routes: List[Route] = []
+    user: Visitor
 
-    event_name :str
-    route: Route
-    visitor: Visitor
-    student: Student
+    def __init__(self, event_name: str):
+        self.event_name = event_name
+        self.routes = []
 
-    def __init__(self, event_name: str, visitor: Visitor = None, student:Student = None):
-        self.sms_route = Sms()
-        self.email_route = Email()
-        self.tg_route = Telegram()
-        self.visitor = visitor
-        self.student = student
-        if event_name == "signup":
-            self.notify_signup()
-            # print(f"Hello {visitor.name} just signed up!")
-        elif event_name == "subscribe":
-            self.notify_subscribe()
-            # print("hello subscribe")
-        elif event_name == "cancel":
-            self.notify_cancel()
-            # print("hello cancel")
+    def add(self, route: Route):
+        self.routes.append(route)
 
-    def notify_signup(self):
-        self.sms_route.send(f" {self.visitor.name} signed up SUCCESSFULLY!")
-        self.email_route.send(f" {self.visitor.name} signed up SUCCESSFULLY!")
+    def notify(self, user):
+        self.user = user
+        sentenceMap = {
+            "signup": "signed up SUCCESSFULLY!",
+            "subscribe": "subscribed SUCCESSFULLY!",
+            "cancel": "cancelled SUCCESSFULLY!",
+        }
 
-    def notify_subscribe(self):
-        self.email_route.send(f" {self.student.name} subscribed SUCCESSFULLY!")
-        self.tg_route.send(f" {self.student.name} subscribed SUCCESSFULLY!")
+        sentence: str = sentenceMap[self.event_name]
 
-    def notify_cancel(self):
-        self.email_route.send(f" {self.student.name} cancelled SUCCESSFULLY!")
-        self.tg_route.send(f" {self.student.name} cancelled SUCCESSFULLY!")
+        for route in self.routes:
+            route.send(f" {self.user.name} {sentence}")

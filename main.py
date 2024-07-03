@@ -1,4 +1,6 @@
 # This is a sample Python script.
+from typing import List
+
 from email import Email
 from event import Event
 from language import Language
@@ -29,15 +31,21 @@ def main(name):
     sms = Sms()
     print(robert.name)
 
-    signup = Event("signup", visitor=jonny)
-    subscribe = Event("subscribe", student=robert)
-    cancel = Event("cancel", student=robert)
-    # cancel = Event("cancel", jonny)
+    signup = Event("signup")
+    signup.add(sms)
+    signup.add(email)
+    signup.notify(user=jonny)
 
-    # sms_route = Sms()
-    # email_route = Email()
-    # telegram_route = Telegram()
-    # sms_route.send('hiii')
+    subscribe = Event("subscribe")
+    subscribe.add(email)
+    subscribe.add(telegram)
+    subscribe.notify(user=jonny)
+
+    cancel = Event("cancel")
+    cancel.add(email)
+    cancel.add(telegram)
+    cancel.notify(user=jonny)
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
