@@ -30,15 +30,21 @@ def main(name):
     email = Email()
     sms = Sms()
     print(robert.name)
-    signupRoute: List[Route] = [sms, email]
-    subscribeRoute: List[Route] = [email, telegram]
-    cancelRoute: List[Route] = [email, telegram]
+
     signup = Event("signup")
-    signup.notify(user=jonny, routes=signupRoute)
+    signup.add(sms)
+    signup.add(email)
+    signup.notify(user=jonny)
+
     subscribe = Event("subscribe")
-    subscribe.notify(user=jonny, routes=subscribeRoute)
+    subscribe.add(email)
+    subscribe.add(telegram)
+    subscribe.notify(user=jonny)
+
     cancel = Event("cancel")
-    cancel.notify(user=jonny, routes=cancelRoute)
+    cancel.add(email)
+    cancel.add(telegram)
+    cancel.notify(user=jonny)
 
 
 # Press the green button in the gutter to run the script.

@@ -15,37 +15,33 @@ class Event:
     routes: List[Route] = []
     user: Visitor
 
-
     def __init__(self, event_name: str):
         self.event_name = event_name
         self.sms_route = Sms()
         self.email_route = Email()
         self.tg_route = Telegram()
-        self.routes = [self.sms_route, self.email_route, self.tg_route]
+        self.routes = []
 
-    def notify(self, user, routes: List[Route]):
+    def add(self, route: Route):
+        self.routes.append(route)
+
+    def notify(self, user):
         self.user = user
         if self.event_name == "signup":
-            self.notify_signup(routes)
+            self.notify_signup()
         elif self.event_name == "subscribe":
-            self.notify_subscribe(routes)
+            self.notify_subscribe()
         elif self.event_name == "cancel":
-            self.notify_cancel(routes)
+            self.notify_cancel()
 
-    def notify_signup(self, routes: List[Route]):
-        for route in routes:
+    def notify_signup(self):
+        for route in self.routes:
             route.send(f" {self.user.name} signed up SUCCESSFULLY!")
-        # self.sms_route.send(f" {self.user.name} signed up SUCCESSFULLY!")
-        # self.email_route.send(f" {self.user.name} signed up SUCCESSFULLY!")
 
-    def notify_subscribe(self, routes: List[Route]):
-        for route in routes:
+    def notify_subscribe(self):
+        for route in self.routes:
             route.send(f" {self.user.name} subscribed SUCCESSFULLY!")
-        # self.email_route.send(f" {self.user.name} subscribed SUCCESSFULLY!")
-        # self.tg_route.send(f" {self.user.name} subscribed SUCCESSFULLY!")
 
-    def notify_cancel(self, routes: List[Route]):
-        for route in routes:
+    def notify_cancel(self):
+        for route in self.routes:
             route.send(f" {self.user.name} cancelled SUCCESSFULLY!")
-        # self.email_route.send(f" {self.user.name} cancelled SUCCESSFULLY!")
-        # self.tg_route.send(f" {self.user.name} cancelled SUCCESSFULLY!")
