@@ -17,9 +17,6 @@ class Event:
 
     def __init__(self, event_name: str):
         self.event_name = event_name
-        self.sms_route = Sms()
-        self.email_route = Email()
-        self.tg_route = Telegram()
         self.routes = []
 
     def add(self, route: Route):
@@ -27,21 +24,13 @@ class Event:
 
     def notify(self, user):
         self.user = user
-        if self.event_name == "signup":
-            self.notify_signup()
-        elif self.event_name == "subscribe":
-            self.notify_subscribe()
-        elif self.event_name == "cancel":
-            self.notify_cancel()
+        sentenceMap = {
+            "signup": "signed up SUCCESSFULLY!",
+            "subscribe": "subscribed SUCCESSFULLY!",
+            "cancel": "cancelled SUCCESSFULLY!",
+        }
 
-    def notify_signup(self):
-        for route in self.routes:
-            route.send(f" {self.user.name} signed up SUCCESSFULLY!")
+        sentence: str = sentenceMap[self.event_name]
 
-    def notify_subscribe(self):
         for route in self.routes:
-            route.send(f" {self.user.name} subscribed SUCCESSFULLY!")
-
-    def notify_cancel(self):
-        for route in self.routes:
-            route.send(f" {self.user.name} cancelled SUCCESSFULLY!")
+            route.send(f" {self.user.name} {sentence}")
