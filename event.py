@@ -1,5 +1,7 @@
 # Event -ASSOCIATION - Route
 # Event - DEPENDENCY - Visitor
+from typing import List
+
 from email import Email
 from route import Route
 from sms import Sms
@@ -10,8 +12,9 @@ from visitor import Visitor
 
 class Event:
     event_name: str
-    route: Route
+    routes: List[Route] = []
     user: Visitor
+
 
     def __init__(self, event_name: str):
         self.event_name = event_name

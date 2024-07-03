@@ -1,4 +1,6 @@
 # This is a sample Python script.
+from typing import List
+
 from email import Email
 from event import Event
 from language import Language
