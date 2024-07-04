@@ -2,6 +2,7 @@
 from typing import List
 
 from email import Email
+from en_us import Enus
 from event import Event
 from language import Language
 from route import Route
@@ -9,6 +10,7 @@ from sms import Sms
 from student import Student
 from telegram import Telegram
 from visitor import Visitor
+from zh_tw import Zhtw
 
 
 # Press ⌃R to execute it or replace it with your code.
@@ -19,17 +21,16 @@ def main(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
 
+    zhtw = Zhtw()
+    enus = Enus()
+    print(zhtw.get_msg(msg_key="signup"))
+    print(enus.get_msg(msg_key="signup"))
 
-    zhtw = Language("zh-tw")
     jonny = Visitor("jonny", zhtw)
-
-    enus = Language("en-us")
-    robert = Student("robert", enus)
 
     telegram = Telegram()
     email = Email()
     sms = Sms()
-    print(robert.name)
 
     signup = Event("signup")
     signup.add(sms)
