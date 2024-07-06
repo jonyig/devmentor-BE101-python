@@ -1,4 +1,10 @@
 # Language -COMPOSITION- zh-TW, en-US
-class Language:
-    def __init__(self, name):
-        self.name = name
+from abc import ABC, abstractmethod
+
+
+class Language(ABC):
+    msg_key: str
+
+    @abstractmethod
+    def get_msg(self, msg_key: str) -> str:
+        pass
