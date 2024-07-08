@@ -7,7 +7,7 @@ class Visitor:
     name :str
     language: Language
 
-    def __init__(self, name :str, language: Language):
+    def __init__(self, name :str, language : Language):
         self.name = name
         self.language = language
 

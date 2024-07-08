@@ -1,10 +1,21 @@
-# Language -COMPOSITION- zh-TW, en-US
-from abc import ABC, abstractmethod
-
-
-class Language(ABC):
+class Language():
     msg_key: str
+    lang_code: str
 
-    @abstractmethod
+    def __init__(self, lang_code):
+        self.lang_code = lang_code
+        self.msg = {
+            "enus": {
+                "signup": "signed up SUCCESSFULLY",
+                "subscribe": "subscribed SUCCESSFULLY",
+                "cancel": "cancelled SUCCESSFULLY"
+            },
+            "zhtw": {
+                "signup": "註冊成功",
+                "subscribe": "訂閱成功",
+                "cancel": "取消成功"
+            }
+        }
+
     def get_msg(self, msg_key: str) -> str:
-        pass
+        return self.msg[self.lang_code][msg_key]
