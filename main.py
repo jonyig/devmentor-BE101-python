@@ -3,6 +3,21 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
+# Event Interface
+class Event(ABC):
+    @abstractmethod
+    def add_channel(self, notification: Notification):
+        """
+        Every event should have an add_channel method
+        """
+        pass
+
+    @abstractmethod
+    def notify(self, user: User):
+        """
+        Every event should have a notify method
+        """
+        pass
 
 def main(name):
     # Use a breakpoint in the code line below to debug your script.
