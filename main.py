@@ -2,6 +2,19 @@
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from abc import ABC, abstractmethod
+
+# Notification Interface
+class Notification(ABC):
+
+    @abstractmethod
+    def send_message(self, message: str, user: 'User'):
+        """
+        Every notification should have a send_message method
+        """
+        pass
+
+
 
 
 def main(name):
