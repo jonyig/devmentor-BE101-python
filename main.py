@@ -13,7 +13,10 @@ class Notification(ABC):
         Every notification should have a send_message method
         """
         pass
-
+# Email Notification
+class Email(Notification):
+    def send_message(self, message: str, user: 'User'):
+        print(f"Sending Email to {user.email}: {message}")
 
 
 
