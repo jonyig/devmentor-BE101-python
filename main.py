@@ -50,6 +50,21 @@ class CourseBookingEvent(Event):
             channel.send_message(message, user)
 
 
+# CourseCancelEvent
+class CourseCancelEvent(Event):
+    def __init__(self):
+        self.content = {"zh-TW": "學生取消課程", "en-US": "Course Cancellation"}
+        self.channels = [Email(), Telegram()]
+
+    def add_channel(self, notification: Notification):
+        self.channels.append(notification)
+
+    def notify(self, user: User):
+        message = self.content.get(user.prefers_language, "Course Cancellation")
+        for channel in self.channels:
+            channel.send_message(message, user)
+
+
 def main(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi123456, {name}')  # Press ⌘F8 to toggle the breakpoint.
