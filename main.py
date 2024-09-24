@@ -17,7 +17,10 @@ class Notification(ABC):
 class Email(Notification):
     def send_message(self, message: str, user: 'User'):
         print(f"Sending Email to {user.email}: {message}")
-
+# SMS Notification
+class SMS(Notification):
+    def send_message(self, message: str, user: 'User'):
+        print(f"Sending SMS to {user.phone}: {message}")
 
 
 def main(name):
