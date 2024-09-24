@@ -22,6 +22,10 @@ class SMS(Notification):
     def send_message(self, message: str, user: 'User'):
         print(f"Sending SMS to {user.phone}: {message}")
 
+# Telegram Notification
+class Telegram(Notification):
+    def send_message(self, message: str, user: 'User'):
+        print(f"Sending Telegram message to {user.id}: {message}")
 
 def main(name):
     # Use a breakpoint in the code line below to debug your script.
